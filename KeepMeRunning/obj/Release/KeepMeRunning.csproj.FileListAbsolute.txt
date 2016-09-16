@@ -5,3 +5,9 @@ D:\Documents\Visual Studio 2015\Projects\ezzBot\bin\KeepMeRunning.pdb
 D:\Documents\Visual Studio 2015\Projects\ezzBot\KeepMeRunning\obj\Release\KeepMeRunning.exe
 D:\Documents\Visual Studio 2015\Projects\ezzBot\KeepMeRunning\obj\Release\KeepMeRunning.pdb
 D:\Documents\Visual Studio 2015\Projects\ezzBot\KeepMeRunning\obj\Release\KeepMeRunning.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\Botting-LOL\KeepMeRunning\obj\Release\KeepMeRunning.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\Botting-LOL\KeepMeRunning\obj\Release\KeepMeRunning.exe
+D:\Documents\GitHub\Botting-LOL\KeepMeRunning\obj\Release\KeepMeRunning.pdb
+D:\Documents\GitHub\Botting-LOL\bin\KeepMeRunning.exe.config
+D:\Documents\GitHub\Botting-LOL\bin\KeepMeRunning.exe
+D:\Documents\GitHub\Botting-LOL\bin\KeepMeRunning.pdb
