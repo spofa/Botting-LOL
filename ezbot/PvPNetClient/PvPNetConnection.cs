@@ -253,6 +253,7 @@ namespace PvPNetClient
                 else
                 {
                     this.Error("Unable to get Auth Key \n" + (object)ex, ErrorType.AuthKey);
+                    Console.WriteLine("FUCKER");
                     this.Disconnect();
                     Application.Exit();
                 }
@@ -513,8 +514,6 @@ namespace PvPNetClient
                    return;
                this.OnDisconnect((object)this, EventArgs.Empty);
            })).Start();
-
-            Application.Exit();
         }
 
         public static object y(string val)
@@ -1438,7 +1437,6 @@ namespace PvPNetClient
         (object) arg0.GetBaseTypedObject(),
         (object) arg1
             }, (RiotGamesObject)endOfGameStats);
-            Tools.ConsoleMessage("IP: " + endOfGameStats.IpTotal, ConsoleColor.Green);
         }
 
         public async Task<EndOfGameStats> GetTeamEndOfGameStats(TeamId arg0, double arg1)

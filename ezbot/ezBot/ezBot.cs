@@ -318,6 +318,7 @@ namespace ezBot
                         if (this.exeProcess == null)
                             return;
                         EndOfGameStats eog = new EndOfGameStats();
+                        Tools.ConsoleMessage("IP: " + this.loginPacket.IpBalance, ConsoleColor.Cyan);
                         this.connection_OnMessageReceived(sender, (object)eog);
                         this.exeProcess.Exited -= new EventHandler(exeProcess_Exited);
                         this.exeProcess.Kill();
@@ -576,13 +577,15 @@ namespace ezBot
                 Convert.ToInt32(num2);
             }
             else
+            {
                 Tools.ConsoleMessage("error received:\n" + error.Message, ConsoleColor.White);
+                Application.Exit();
+            }
         }
 
         private void connection_OnDisconnect(object sender, EventArgs e)
         {
             Tools.ConsoleMessage("Disconnected", ConsoleColor.White);
-            Thread.Sleep(3000);
             Application.Exit();
         }
 

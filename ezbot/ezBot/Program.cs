@@ -8,7 +8,6 @@ using ezBot.Utils;
 using PvPNetClient;
 using System;
 using System.Collections;
-using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -87,7 +86,7 @@ namespace ezBot
                 {
                     Tools.ConsoleMessage("You may have an issue in your accounts.txt", ConsoleColor.Red);
                     Tools.ConsoleMessage("Acconts structure ACCOUNT|PASSWORD|REGION|QUEUE_TYPE", ConsoleColor.Red);
-                    Console.ReadKey();
+                    Application.Exit();
                 }
             }
         }

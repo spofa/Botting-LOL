@@ -19,3 +19,5 @@ D:\Documents\Visual Studio 2015\Projects\ezzBot\Built\ezBot.pdb
 D:\Documents\Visual Studio 2015\Projects\ezzBot\bin\ezBot.exe
 D:\Documents\Visual Studio 2015\Projects\ezzBot\bin\ezBot.pdb
 D:\Documents\Visual Studio 2015\Projects\ezzBot\ezbot\obj\Release\ezBot.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\Botting-LOL\ezbot\obj\Release\ezBot.exe
+D:\Documents\GitHub\Botting-LOL\ezbot\obj\Release\ezBot.pdb

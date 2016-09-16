@@ -19,8 +19,6 @@ namespace ezBot
         public static void ErrorReport(string message)
         {
             File.WriteAllText("error.txt", message);
-            ConsoleMessage(message, ConsoleColor.White);
-            Thread.Sleep(5000);
         }
 
         public static void TitleMessage(string message)
