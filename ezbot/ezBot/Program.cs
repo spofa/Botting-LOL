@@ -39,8 +39,15 @@ namespace ezBot
 
         private static void Main(string[] args)
         {
-            AppDomain currentDomain = AppDomain.CurrentDomain;
-            currentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            new Thread(new ThreadStart(() =>
+            {
+                while (true)
+                {
+                    Console.Title = "ezBot: " + DateTime.Now;
+                    Thread.Sleep(1000);
+                }
+            })).Start();
+
             Program.LoadConfigs();
             Program.LoadLeagueVersion();
             Console.Title = "ezBot";
@@ -83,15 +90,6 @@ namespace ezBot
                     Console.ReadKey();
                 }
             }
-        }
-
-        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
-        {
-            File.WriteAllText("errors.txt", "[" + DateTime.Now + "] " + e.ExceptionObject);
-            Console.WriteLine("Terminating: "+e.IsTerminating);
-            Thread.Sleep(3000);
-            if (e.IsTerminating)
-                Application.Restart();
         }
 
         public static void LoadLeagueVersion()
@@ -163,7 +161,7 @@ namespace ezBot
                 Program.delay1 = Convert.ToInt32(iniFile.Read("ACCOUNT", "MinDelay"));
                 Program.delay2 = Convert.ToInt32(iniFile.Read("ACCOUNT", "MaxDelay"));
                 Program.buyExpBoost = Convert.ToBoolean(iniFile.Read("ACCOUNT", "BuyExpBoost"));
-                Program.champion = iniFile.Read("CHAMPIONS", "firstChampionPick").ToUpper();
+                Program.champion = iniFile.Read("CHAMPIONS", "Champion").ToUpper();
                 Program.replaceConfig = Convert.ToBoolean(iniFile.Read("LOLSCREEN", "ReplaceLoLConfig"));
                 Program.lolHeight = Convert.ToInt32(iniFile.Read("LOLSCREEN", "SreenHeight"));
                 Program.lolWidth = Convert.ToInt32(iniFile.Read("LOLSCREEN", "SreenWidth"));
@@ -172,7 +170,7 @@ namespace ezBot
             catch (Exception ex)
             {
                 Tools.ErrorReport(ex.ToString());
-                Application.Restart();
+                Application.Exit();
             }
         }
 

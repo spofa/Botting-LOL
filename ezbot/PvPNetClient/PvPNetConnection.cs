@@ -39,6 +39,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using System.Windows.Forms;
 
 namespace PvPNetClient
 {
@@ -106,7 +107,6 @@ namespace PvPNetClient
                catch
                {
                    this.Error("Riots servers are currently unavailable.", ErrorType.AuthKey);
-                   Tools.Log("Riots servers are currently unavailable.");
                    this.Disconnect();
                    return;
                }
@@ -243,20 +243,18 @@ namespace PvPNetClient
                 if (ex.Message == "The remote name could not be resolved: '" + this.loginQueue + "'")
                 {
                     this.Error("Please make sure you are connected the internet!", ErrorType.AuthKey);
-                    Tools.Log("Please make sure you are connected the internet.");
                     this.Disconnect();
                 }
                 else if (ex.Message == "The remote server returned an error: (403) Forbidden.")
                 {
                     this.Error("Your username or password is incorrect!", ErrorType.Password);
-                    Tools.Log("You username os password is not corret.");
                     this.Disconnect();
                 }
                 else
                 {
                     this.Error("Unable to get Auth Key \n" + (object)ex, ErrorType.AuthKey);
-                    Tools.Log("Unable to get Auth Key \n" + (object)ex);
                     this.Disconnect();
+                    Application.Exit();
                 }
                 return false;
             }
@@ -292,7 +290,6 @@ namespace PvPNetClient
             catch (Exception ex)
             {
                 this.Error("Unable to connect to Riot Games web server \n" + ex.Message, ErrorType.General);
-                Tools.Log("Unable to connect to Riot Games web server \n" + ex.Message);
                 this.Disconnect();
                 return false;
             }
@@ -317,7 +314,6 @@ namespace PvPNetClient
             if ((int)num2 != 3)
             {
                 Tools.ConsoleMessage("Server returned incorrect version in handshake: " + (object)num2, ConsoleColor.Red);
-                Tools.Log("Server returned incorrect version in handshake: " + num2.ToString());
                 this.Disconnect();
                 return false;
             }
@@ -344,7 +340,6 @@ namespace PvPNetClient
             if (flag)
                 return true;
             Tools.ConsoleMessage("Server returned invalid handshake!", ConsoleColor.Red);
-            Tools.Log("Server returned invalid handshake!");
             this.Disconnect();
             return false;
         }
@@ -518,6 +513,8 @@ namespace PvPNetClient
                    return;
                this.OnDisconnect((object)this, EventArgs.Empty);
            })).Start();
+
+            Application.Exit();
         }
 
         public static object y(string val)
@@ -810,22 +807,22 @@ namespace PvPNetClient
                                if (to.ContainsKey("body") && to["body"] is TypedObject)
                                    new Thread((ThreadStart)(() =>
                              {
-                           TypedObject result = (TypedObject)to["body"];
-                           if (result.type.Equals("com.riotgames.platform.game.GameDTO"))
-                               this.MessageReceived((object)new GameDTO(result));
-                           else if (result.type.Equals("com.riotgames.platform.game.PlayerCredentialsDto"))
-                               this.MessageReceived((object)new PlayerCredentialsDto(result));
-                           else if (result.type.Equals("com.riotgames.platform.game.message.GameNotification"))
-                               this.MessageReceived((object)new GameNotification(result));
-                           else if (result.type.Equals("com.riotgames.platform.matchmaking.SearchingForMatchNotification"))
-                               this.MessageReceived((object)new SearchingForMatchNotification(result));
-                           else if (result.type.Equals("com.riotgames.platform.messaging.StoreFulfillmentNotification"))
-                               this.MessageReceived((object)new StoreFulfillmentNotification(result));
-                           else if (result.type.Equals("com.riotgames.platform.messaging.StoreFulfillmentNotification"))
-                               this.MessageReceived((object)new StoreAccountBalanceNotification(result));
-                           else
-                               this.MessageReceived((object)result);
-                       })).Start();
+                                 TypedObject result = (TypedObject)to["body"];
+                                 if (result.type.Equals("com.riotgames.platform.game.GameDTO"))
+                                     this.MessageReceived((object)new GameDTO(result));
+                                 else if (result.type.Equals("com.riotgames.platform.game.PlayerCredentialsDto"))
+                                     this.MessageReceived((object)new PlayerCredentialsDto(result));
+                                 else if (result.type.Equals("com.riotgames.platform.game.message.GameNotification"))
+                                     this.MessageReceived((object)new GameNotification(result));
+                                 else if (result.type.Equals("com.riotgames.platform.matchmaking.SearchingForMatchNotification"))
+                                     this.MessageReceived((object)new SearchingForMatchNotification(result));
+                                 else if (result.type.Equals("com.riotgames.platform.messaging.StoreFulfillmentNotification"))
+                                     this.MessageReceived((object)new StoreFulfillmentNotification(result));
+                                 else if (result.type.Equals("com.riotgames.platform.messaging.StoreFulfillmentNotification"))
+                                     this.MessageReceived((object)new StoreAccountBalanceNotification(result));
+                                 else
+                                     this.MessageReceived((object)result);
+                             })).Start();
                            }
                        }
                        while (!nullable1.HasValue);
@@ -1441,6 +1438,7 @@ namespace PvPNetClient
         (object) arg0.GetBaseTypedObject(),
         (object) arg1
             }, (RiotGamesObject)endOfGameStats);
+            Tools.ConsoleMessage("IP: " + endOfGameStats.IpTotal, ConsoleColor.Green);
         }
 
         public async Task<EndOfGameStats> GetTeamEndOfGameStats(TeamId arg0, double arg1)

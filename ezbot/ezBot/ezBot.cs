@@ -124,7 +124,6 @@ namespace ezBot
                 case "PH":
                 case "VN":
                     Tools.ConsoleMessage("Garena server is not supported on this version of ezBot", ConsoleColor.Red);
-                    Tools.Log("Garena server is not supported on this version of ezBot.");
                     this.connection.Disconnect();
                     Thread.Sleep(3000);
                     Application.Exit();
@@ -308,7 +307,6 @@ namespace ezBot
                     return;
                 if (message is EndOfGameStats)
                 {
-                    Tools.ConsoleMessage("IP: "+this.ipBalance, ConsoleColor.Green);
                     this.EnterQueue();
                 }
                 else
@@ -321,11 +319,15 @@ namespace ezBot
                             return;
                         EndOfGameStats eog = new EndOfGameStats();
                         this.connection_OnMessageReceived(sender, (object)eog);
-                        this.exeProcess.Exited -= new EventHandler(this.exeProcess_Exited);
+                        this.exeProcess.Exited -= new EventHandler(exeProcess_Exited);
                         this.exeProcess.Kill();
                         Thread.Sleep(500);
-                        if (this.exeProcess.Responding)
-                            Process.Start(@"taskkill /F /IM League of Legends.exe");
+                        try
+                        {
+                            if (this.exeProcess.Responding)
+                                Process.Start(@"taskkill /F /IM League of Legends.exe");
+                        }
+                        catch (Exception) { };
                         this.loginPacket = await this.connection.GetLoginDataPacketForUser();
                         this.archiveSumLevel = this.sumLevel;
                         this.sumLevel = this.loginPacket.AllSummonerData.SummonerLevel.Level;
@@ -335,9 +337,9 @@ namespace ezBot
                     }
                     catch (Exception ex)
                     {
-                        Tools.Log(ex.Message.ToString());
+                        Console.WriteLine(ex.ToString());
                         Thread.Sleep(5000);
-
+                        Application.Exit();
                     }
                 }
             }
@@ -380,8 +382,7 @@ namespace ezBot
                         this.m_accessToken = playerJoinFailure.AccessToken;
                         if (playerJoinFailure.LeaverPenaltyMillisRemaining > this.m_leaverBustedPenalty)
                             this.m_leaverBustedPenalty = playerJoinFailure.LeaverPenaltyMillisRemaining;
-                        TimeSpan ts = DateTime.Now.AddMilliseconds(this.m_leaverBustedPenalty).TimeOfDay;
-                        Tools.ConsoleMessage("LEAVER_BUSTED: " + ts.Hours + ":" + ts.Minutes + ":" + ts.Seconds, ConsoleColor.Red);
+                        Tools.ConsoleMessage("LEAVER_BUSTED: " + DateTime.Now.AddMilliseconds(this.m_leaverBustedPenalty), ConsoleColor.Red);
                     }
                     else if (playerJoinFailure.ReasonFailed == "LEAVER_BUSTER_TAINTED_WARNING")
                     {
@@ -398,11 +399,25 @@ namespace ezBot
                     {
                         this.m_accessToken = playerJoinFailure.AccessToken;
                         this.m_leaverBustedPenalty = playerJoinFailure.DodgePenaltyRemainingTime;
-                        TimeSpan ts = DateTime.Now.AddMilliseconds(this.m_leaverBustedPenalty).TimeOfDay;
-                        Tools.ConsoleMessage("QUEUE_DODGER: " + ts.Hours + ":" + ts.Minutes + ":" + ts.Seconds, ConsoleColor.Red);
+                        try
+                        {
+                            Tools.ConsoleMessage("QUEUE_DODGER: " + DateTime.Now.AddMilliseconds(this.m_leaverBustedPenalty), ConsoleColor.Red);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                            Console.WriteLine("YOLO2");
+                        }
                     }
                 }
-                Thread.Sleep(TimeSpan.FromMilliseconds((double)this.m_leaverBustedPenalty));
+                try
+                {
+                    Thread.Sleep(TimeSpan.FromMilliseconds((double)this.m_leaverBustedPenalty));
+                }catch(Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine("YOLO1");
+                }
                 m = await this.connection.AttachToLowPriorityQueue(matchParams, this.m_accessToken);
                 if (m.PlayerJoinFailures == null)
                 {
@@ -413,7 +428,7 @@ namespace ezBot
                     Tools.ConsoleMessage("There was an error in joining lower priority queue.\nDisconnecting.", ConsoleColor.White);
                     this.connection.Disconnect();
                     Thread.Sleep(3000);
-                    Application.Restart();
+                    Application.Exit();
                 }
             }
         }
@@ -566,15 +581,13 @@ namespace ezBot
 
         private void connection_OnDisconnect(object sender, EventArgs e)
         {
-            Console.Title = "ezBot - Offline";
             Tools.ConsoleMessage("Disconnected", ConsoleColor.White);
             Thread.Sleep(3000);
-            Application.Restart();
+            Application.Exit();
         }
 
         private void connection_OnConnect(object sender, EventArgs e)
         {
-            Console.Title = "ezBot - Online";
         }
 
         private async void buyBoost()
@@ -840,6 +853,7 @@ namespace ezBot
             catch (Exception ex)
             {
                 Console.WriteLine((object)ex);
+                Application.Exit();
             }
         }
 

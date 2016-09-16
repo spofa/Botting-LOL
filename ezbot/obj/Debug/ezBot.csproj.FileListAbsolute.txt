@@ -1,0 +1,14 @@
+D:\Documents\Visual Studio 2015\Projects\ezbot\ezBot\obj\Debug\ezBot.csprojResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2015\Projects\ezbot\ezBot\bin\Debug\ezBot.exe
+D:\Documents\Visual Studio 2015\Projects\ezbot\ezBot\bin\Debug\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezbot\ezBot\obj\Debug\ezBot.exe
+D:\Documents\Visual Studio 2015\Projects\ezbot\ezBot\obj\Debug\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezbot\obj\Debug\ezBot.exe
+D:\Documents\Visual Studio 2015\Projects\ezbot\obj\Debug\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezbot\bin\Debug\ezBot.exe
+D:\Documents\Visual Studio 2015\Projects\ezbot\bin\Debug\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezbot\obj\Debug\ezBot.csprojResolveAssemblyReference.cache
+D:\Desktop\ezbot\obj\Debug\ezBot.exe
+D:\Desktop\ezbot\obj\Debug\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezzBot\ezbot\obj\Debug\ezBot.exe
+D:\Documents\Visual Studio 2015\Projects\ezzBot\ezbot\obj\Debug\ezBot.pdb

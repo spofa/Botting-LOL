@@ -1,0 +1,7 @@
+D:\Documents\Visual Studio 2015\Projects\ezzBot\KeepMeRunning\bin\Release\KeepMeRunning.exe.config
+D:\Documents\Visual Studio 2015\Projects\ezzBot\bin\KeepMeRunning.exe.config
+D:\Documents\Visual Studio 2015\Projects\ezzBot\bin\KeepMeRunning.exe
+D:\Documents\Visual Studio 2015\Projects\ezzBot\bin\KeepMeRunning.pdb
+D:\Documents\Visual Studio 2015\Projects\ezzBot\KeepMeRunning\obj\Release\KeepMeRunning.exe
+D:\Documents\Visual Studio 2015\Projects\ezzBot\KeepMeRunning\obj\Release\KeepMeRunning.pdb
+D:\Documents\Visual Studio 2015\Projects\ezzBot\KeepMeRunning\obj\Release\KeepMeRunning.csprojResolveAssemblyReference.cache

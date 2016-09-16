@@ -1,0 +1,21 @@
+D:\Documents\Visual Studio 2015\Projects\ezbot\ezBot\bin\Release\ezBot.exe
+D:\Documents\Visual Studio 2015\Projects\ezbot\ezBot\bin\Release\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezbot\ezBot\obj\Release\ezBot.exe
+D:\Documents\Visual Studio 2015\Projects\ezbot\ezBot\obj\Release\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezbot\ezBot\obj\Release\ezBot.csprojResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2015\Projects\ezbot\obj\Release\ezBot.exe
+D:\Documents\Visual Studio 2015\Projects\ezbot\obj\Release\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezbot\bin\Release\ezBot.exe
+D:\Documents\Visual Studio 2015\Projects\ezbot\bin\Release\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezbot\obj\Release\ezBot.csprojResolveAssemblyReference.cache
+D:\Games\ezbot\ezBot.exe
+D:\Games\ezbot\ezBot.pdb
+D:\Documents\Games\ezbot\ezBot.exe
+D:\Documents\Games\ezbot\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezzBot\ezbot\obj\Release\ezBot.exe
+D:\Documents\Visual Studio 2015\Projects\ezzBot\ezbot\obj\Release\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezzBot\Built\ezBot.exe
+D:\Documents\Visual Studio 2015\Projects\ezzBot\Built\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezzBot\bin\ezBot.exe
+D:\Documents\Visual Studio 2015\Projects\ezzBot\bin\ezBot.pdb
+D:\Documents\Visual Studio 2015\Projects\ezzBot\ezbot\obj\Release\ezBot.csprojResolveAssemblyReference.cache
